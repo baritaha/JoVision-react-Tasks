@@ -1,11 +1,17 @@
 import React from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Task16 from './Tasks/Task#16'; // Import the Task Component
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 const App = () => {
   return (
-    <View style={{ flex: 1 }}>
-      <Task16 /> {/* Render Task16 */}
+    <View style={styles.container}>
+      <Task16 />
     </View>
   );
 };
