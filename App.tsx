@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import Task16 from './Tasks/Task#16'; // Import the Task Component
 import Task17 from './Tasks/Task#17';
 import Task18 from './Tasks/Task#18';
+import Task19 from './Tasks/Task#19';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,6 +17,7 @@ const App = () => {
       <Task16 />
       <Task17/>
       <Task18/>
+      <Task19/>
     </View>
   );
 };
