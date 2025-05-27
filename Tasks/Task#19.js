@@ -11,7 +11,6 @@ const Task19 = () => {
       <TouchableOpacity style={styles.button} onPress={() => setIsVisible(!isVisible)}>
         <Text style={styles.buttonText}>{isVisible ? 'Hide' : 'Show'}</Text>
       </TouchableOpacity>
-
       {isVisible && <MyClassPage_Task19 />}
     </View>
   );

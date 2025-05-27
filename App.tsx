@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import Task16 from './Tasks/Task#16'; // Import the Task Component
 import Task17 from './Tasks/Task#17';
 import Task18 from './Tasks/Task#18';
 import Task19 from './Tasks/Task#19';
+import Task20 from './Tasks/Task#20';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,12 +14,13 @@ const styles = StyleSheet.create({
 
 const App = () => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Task16 />
       <Task17/>
       <Task18/>
       <Task19/>
-    </View>
+      <Task20/>
+    </ScrollView>
   );
 };
 
