@@ -12,7 +12,7 @@ class MyClassPage_Task20 extends Component{
     render(){
         return(
             <View style={styles.contianer}>
-                <Text style={styles.text}>this component use <Text style={{color:'green'}}>Mounting / Unmounting</Text>  life cycle </Text>
+                <Text style={styles.text}>this component Print in console <Text style={{color:'green'}}>Mounting OR Unmounting</Text>  life cycle </Text>
             </View>
         );
     }
