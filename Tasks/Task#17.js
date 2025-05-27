@@ -11,7 +11,7 @@ const Task17 = () => {
         style={styles.button}
         onPress={() => setIsVisible(!isVisible)}
       >
-        <Text style={styles.buttonText}>{isVisible ? "Hide" : "Show"}</Text>
+        <Text style={styles.buttonText}>{isVisible ? 'Hide' : 'Show'}</Text>
       </TouchableOpacity>
 
       {isVisible && <Text style={styles.text}>abdel-bari altaha</Text>}
