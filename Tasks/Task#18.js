@@ -27,7 +27,7 @@ const Task18 = () => {
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  loadingText: { fontSize: 20, marginTop: 10, color: '#666' },
+  loadingText: { fontSize: 20, marginTop: 10, color: 'aqua' },
   nameText: { fontSize: 28, fontWeight: 'bold', color: 'black' },
  text2: { fontSize: 18, margin: 10, backgroundColor: 'lightblue', padding: 10, borderRadius: 5, width: '100%', textAlign: 'center',fontWeight: 'bold' },
 });
