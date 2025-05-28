@@ -8,10 +8,11 @@ import Task20 from './Tasks/Task#20';
 import Task21 from './Tasks/Task#21';
 import Task22 from './Tasks/Task#22';
 import Task23 from './Tasks/Task#23';
+import Task24 from './Tasks/Task#24';
 
 const App = () => {
   return (
-    <ImageBackground source={require('./assets/images/imgBk.png')} 
+    <ImageBackground source={require('./assets/images/imgBk.png')}
       style={styles.background}>
     <ScrollView contentContainerStyle={styles.scrollContent}>
       <Task16 />
@@ -22,6 +23,7 @@ const App = () => {
       <Task21/>
       <Task22/>
       <Task23/>
+      <Task24/>
     </ScrollView>
     </ImageBackground>
   );
@@ -29,12 +31,18 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  background: { flex: 1 }, // Ensures full-screen background
+  background: { 
+    flex: 1, 
+    resizeMode: 'contain', // Ensures the image fits within the screen
+    alignItems: 'center', // Centers content inside ImageBackground
+    justifyContent: 'center', // Centers image itself
+  },
   scrollContent: {
     flexGrow: 1,
     flexDirection: 'column',
     padding: 10,
     paddingBottom: 100,
+
   },
 });
 export default App;
