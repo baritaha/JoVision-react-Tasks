@@ -14,7 +14,6 @@ const Task21 = ()=>{
         </View>
     );
 };
-
 const styles = StyleSheet.create({
      container:{flex:1,textAlign:'center',alignItems:'center',marginBottom:15},
      button:{backgroundColor:'#007AFF',padding:12,borderRadius:8},
