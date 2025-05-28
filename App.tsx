@@ -7,12 +7,13 @@ import Task19 from './Tasks/Task#19';
 import Task20 from './Tasks/Task#20';
 import Task21 from './Tasks/Task#21';
 import Task22 from './Tasks/Task#22';
+import Task23 from './Tasks/Task#23';
 
 const App = () => {
   return (
     <ImageBackground source={require('./assets/images/imgBk.png')} 
       style={styles.background}>
-    <ScrollView style={styles.container}>
+    <ScrollView contentContainerStyle={styles.scrollContent}>
       <Task16 />
       <Task17/>
       <Task18/>
@@ -20,15 +21,20 @@ const App = () => {
       <Task20/>
       <Task21/>
       <Task22/>
+      <Task23/>
     </ScrollView>
     </ImageBackground>
   );
 
 };
 
-
-const styles=StyleSheet.create({
-   background: { flex: 1 }, // Ensures full-screen background
-  container: { flex: 1, padding: 10 }, // Allows content inside to scroll
+const styles = StyleSheet.create({
+  background: { flex: 1 }, // Ensures full-screen background
+  scrollContent: {
+    flexGrow: 1,
+    flexDirection: 'column',
+    padding: 10,
+    paddingBottom: 100,
+  },
 });
 export default App;
