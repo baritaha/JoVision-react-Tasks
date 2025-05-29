@@ -6,13 +6,14 @@ const Task23 = ()=>{
     return(
            <View style={styles.container}>
            <Text style={styles.text2}>Task #23</Text>
-        <Text style={styles.textParent}>Parent Text Updated here: <Text style={styles.text}>{text}</Text></Text>
+        <Text style={styles.textParent}>Parent Text Updated here:</Text>
+        <Text style={styles.text}>{text}</Text>
          <MyClassPage_Task23 parentUpdatedText={setText}/>
            </View>
     );
 };
-const styles=StyleSheet.create({
-    container:{flex:1,justifyContent:'center',alignItems:'center'},
+const styles = StyleSheet.create({
+    container:{flex:1,justifyContent:'center',alignItems:'center',minHeight:250},
     text:{color:'red',fontSize:20},
      text2: { fontSize: 18, margin: 10, backgroundColor: 'lightblue', padding: 10, borderRadius: 5, width: '100%', textAlign: 'center',fontWeight: 'bold' },
     textParent:{fontSize:20,marginBottom:20,fontWeight:'bold',color:'green'},

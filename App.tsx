@@ -9,10 +9,11 @@ import Task21 from './Tasks/Task#21';
 import Task22 from './Tasks/Task#22';
 import Task23 from './Tasks/Task#23';
 import Task24 from './Tasks/Task#24';
+import Task25 from './Tasks/Task#25';
 
 const App = () => {
   return (
-    <ImageBackground source={require('./assets/images/imgBk.png')}
+    <ImageBackground source={require('./assets/images/imgBk2.png')}
       style={styles.background}>
     <ScrollView contentContainerStyle={styles.scrollContent}>
       <Task16 />
@@ -24,6 +25,7 @@ const App = () => {
       <Task22/>
       <Task23/>
       <Task24/>
+      <Task25/>
     </ScrollView>
     </ImageBackground>
   );

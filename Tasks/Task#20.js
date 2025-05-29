@@ -16,7 +16,7 @@ const Task20 = () =>{
     );
 };
 const styles = StyleSheet.create({
-    contianer:{flex:1,textAlign:'center',alignItems:'center',marginBottom:15},
+    contianer:{flex:1,textAlign:'center',alignItems:'center',minHeight:210},
     button:{backgroundColor:'#007AFF',padding:12,borderRadius:8},
     text:{color:'#fff',fontSize:18,padding:4,fontWeight:'bold'},
      text2: { fontSize: 18, margin: 10, backgroundColor: 'lightblue', padding: 10, borderRadius: 5, width: '100%', textAlign: 'center',fontWeight: 'bold' },

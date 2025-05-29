@@ -20,7 +20,7 @@ const Task17 = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1,textAlign:'center',alignItems:'center'},
+  container: { flex: 1,textAlign:'center',alignItems:'center',minHeight:160},
   button: { backgroundColor: '#007AFF', padding: 10, borderRadius: 8 },
   buttonText: { color: 'white', fontSize: 18, fontWeight: 'bold' },
   text: { fontSize: 24, fontWeight: 'bold', marginTop: 10 },

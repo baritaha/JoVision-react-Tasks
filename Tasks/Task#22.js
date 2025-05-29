@@ -6,7 +6,8 @@ const Task22 = ()=>{
     return(
         <View style={styles.container}>
             <Text style={styles.text2}>Task #22</Text>
-           <Text style={styles.textParent}>Parent Text Updated here: <Text style={styles.text}>{text}</Text></Text>
+           <Text style={styles.textParent}>Parent Text Updated here: </Text>
+           <Text style={styles.text}>{text}</Text>
             <MyFunctionalComponentTask22 parentUpdatedText={setText}/>
         </View>
     );

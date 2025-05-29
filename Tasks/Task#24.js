@@ -20,7 +20,6 @@ const Task24 = ()=>{
 const styles = StyleSheet.create({
     container:{flex:1,justifyContent:'center',alignItems:'center'},
        input: {
- 
     padding: 10,
     borderWidth: 2,
     borderColor: 'blue',
