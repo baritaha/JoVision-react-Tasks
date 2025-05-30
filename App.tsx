@@ -10,6 +10,7 @@ import Task22 from './Tasks/Task#22';
 import Task23 from './Tasks/Task#23';
 import Task24 from './Tasks/Task#24';
 import Task25 from './Tasks/Task#25';
+import Task26 from './Tasks/Task#26';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
       <Task23/>
       <Task24/>
       <Task25/>
+      <Task26/>
     </ScrollView>
     </ImageBackground>
   );
