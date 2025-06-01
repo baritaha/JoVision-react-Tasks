@@ -5,28 +5,33 @@ const Task26 = () => {
     const [ip, setIp] = useState('Press a button to get your IP');
     const [isLoading, setIsLoading] = useState(false);
 
-    const fetchIPAsync = async () => {//blocking => feazing data until the respose come
-        try {
-            const response = await fetch('https://api.ipify.org?format=json');
-            const data = await response.json();
-            setIp(`Your IP: ${data.ip}`);
-        } catch (error) {
-            setIp('Error fetching IP');
-        }
-    };
+  const fetchIPAsync = async () => {
+    setIsLoading(true);
+    try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        setIp(`Your IP: ${data.ip}`);
+        console.log(`Your IP: ${data.ip}`);
+    } catch (error) {
+        setIp('Error fetching IP');
+    }
 
-    const fetchIPBlocking = async () => {//Non-Blocking => app keeps working normally while fetching the data in the background.
-        setIsLoading(true);
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        try {
-            const response = await fetch('https://api.ipify.org?format=json');
-            const data = await response.json();
-            setIp(`Your IP: ${data.ip}`);
-        } catch (error) {
-            setIp('Error fetching IP');
-        }
-        setIsLoading(false);
-    };
+    setIsLoading(false);
+};
+const fetchIPBlocking = async () => {
+    setIsLoading(true);
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        setIp(`Your IP: ${data.ip}`);
+    } catch (error) {
+        setIp('Error fetching IP');
+    }
+     setIsLoading(false);
+};
+
 
     return (
         <View style={styles.container}>
