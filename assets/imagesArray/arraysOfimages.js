@@ -15,7 +15,4 @@ export const images = imagesArray.map((image, index) => ({
     src: image.src,
     label: `Image ${index + 1}`,
 }));
-export const imagesWithLabels = imagesArray.map((image, index) => ({
-    src: image.src,
-    label: `Image ${index + 1}`,
-}));
+

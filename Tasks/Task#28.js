@@ -14,19 +14,17 @@ const Task28 = ()=>{
     const flatListRef = useRef(null);
 
     const handleImagePress = (index) => {
-        Alert.alert(`You have selected image: ${index}`);
+        Alert.alert(`You have selected image : ${index}`);
         setSelectedImage(index);
-        if (flatListRef.current) {
-            flatListRef.current.scrollToIndex({ index, animated: true });
-        }
+        // if (flatListRef.current) {
+        //     flatListRef.current.scrollToIndex({ index});
+        // }
     };
-
     useEffect(() => {
         if (selectedImage !== null && flatListRef.current) {
             flatListRef.current.scrollToIndex({ index: selectedImage, animated: true });
         }
     }, [selectedImage]);
-
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Task #28</Text>
@@ -37,14 +35,14 @@ const Task28 = ()=>{
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({ item, index }) => (
                     <Pressable onPress={() => handleImagePress(index)}>
-                        <Image source={item.src} style={styles.image} />
+                    <Text style={styles.text2}>{item.label}</Text>
+                        <Image source={item.src} style={styles.image}/>
                     </Pressable>
                 )}
             />
         </View>
     );
-
-}
+};
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -68,6 +66,16 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 5,
         width: '100%',
+        textAlign: 'center',
+        fontWeight: 'bold',
+    },
+       text2: {
+        fontSize: 18,
+        margin: 10,
+        color: 'white',
+        padding: 10,
+        borderRadius: 5,
+       backgroundColor: 'chocolate',
         textAlign: 'center',
         fontWeight: 'bold',
     },
