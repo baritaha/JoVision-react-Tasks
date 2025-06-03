@@ -1,6 +1,6 @@
 import React from 'react';
 import { ImageBackground, ScrollView, StyleSheet } from 'react-native';
-import Task16 from './Tasks/Task#16'; // Import the Task Component
+import Task16 from './Tasks/Task#16';
 import Task17 from './Tasks/Task#17';
 import Task18 from './Tasks/Task#18';
 import Task19 from './Tasks/Task#19';
@@ -12,6 +12,7 @@ import Task24 from './Tasks/Task#24';
 import Task25 from './Tasks/Task#25';
 import Task26 from './Tasks/Task#26';
 import Task27 from './Tasks/Task#27';
+import Task28 from './Tasks/Task#28';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
       <Task25/>
       <Task26/>
       <Task27/>
+      <Task28/>
     </ScrollView>
     </ImageBackground>
   );
