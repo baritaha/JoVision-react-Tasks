@@ -1,22 +1,26 @@
-import {React, useRef ,useEffect,useState} from 'react';
-import { FlatList, Image, Pressable, StyleSheet, Text, View,Alert,Dimensions } from 'react-native';
+import React from 'react';
+import { FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { Alert } from 'react-native';
+import { Dimensions } from 'react-native';
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 import { images } from '../assets/imagesArray/arraysOfimages';
+import { useEffect } from 'react';
+import { useRef } from 'react';
+
 const Task28 = ()=>{
     const [selectedImage, setSelectedImage] = useState(0);
     const flatListRef = useRef(null);
     const handleImagePress = (index) => {
         Alert.alert(`You have selected image : ${index}`);
         setSelectedImage(index);
-        console.log(`You have index : ${index}`);
         // if (flatListRef.current) {
         //     flatListRef.current.scrollToIndex({ index});
         // }
     };
     useEffect(() => {
         if (selectedImage !== null && flatListRef.current) {
-            console.log(`selectedImage : ${selectedImage}`);
             flatListRef.current.scrollToIndex({ index: selectedImage, animated: true });
         }
     }, [selectedImage]);
@@ -31,7 +35,10 @@ const Task28 = ()=>{
                 renderItem={({ item, index }) => (
                     <Pressable onPress={() => handleImagePress(index)}>
                     <Text style={styles.text2}>{item.label}</Text>
-                        <Image source={item.src}   style={[styles.image,selectedImage === index ? styles.style1 : styles.style2]}/>
+                        <Image source={item.src}   style={[
+                styles.image,
+                selectedImage === index ? styles.style1 : styles.style2]}
+                />
                     </Pressable>
                 )}
             />
