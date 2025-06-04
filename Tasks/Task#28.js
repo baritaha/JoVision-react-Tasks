@@ -10,9 +10,8 @@ import { useEffect } from 'react';
 import { useRef } from 'react';
 
 const Task28 = ()=>{
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedImage, setSelectedImage] = useState(0);
     const flatListRef = useRef(null);
-
     const handleImagePress = (index) => {
         Alert.alert(`You have selected image : ${index}`);
         setSelectedImage(index);
@@ -36,7 +35,10 @@ const Task28 = ()=>{
                 renderItem={({ item, index }) => (
                     <Pressable onPress={() => handleImagePress(index)}>
                     <Text style={styles.text2}>{item.label}</Text>
-                        <Image source={item.src} style={styles.image}/>
+                        <Image source={item.src}   style={[
+                styles.image,
+                selectedImage === index ? styles.style1 : styles.style2]}
+                />
                     </Pressable>
                 )}
             />
@@ -51,13 +53,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     image: {
-        width: screenWidth * 0.6,
-        height: screenHeight * 0.4,
+        width: screenWidth * 0.5,
+        height: screenHeight * 0.3,
         resizeMode: 'contain',
         marginHorizontal: 5,
         borderWidth: 2,
         borderColor: 'black',
         borderRadius: 10,
+        margin:10,
     },
     text: {
         fontSize: 18,
@@ -78,6 +81,20 @@ const styles = StyleSheet.create({
        backgroundColor: 'chocolate',
         textAlign: 'center',
         fontWeight: 'bold',
+    },
+    style1:{
+        borderWidth: 3,
+        borderColor: 'black',
+        borderRadius: 10,
+        transform: [{ scaleY: 1.06 }],
+        transition: {
+            duration: 300,
+        },
+    },
+    style2:{
+        borderWidth: 2,
+        borderColor: 'gray',
+        borderRadius: 10,
     },
 });
 export default Task28;
