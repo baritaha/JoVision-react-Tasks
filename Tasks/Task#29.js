@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Alert, Animated, Button, FlatList, Image, Modal, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, Animated, Button, FlatList, Image, Modal, Pressable, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { images } from '../assets/imagesArray/arraysOfimages';
 
 
@@ -10,13 +10,18 @@ const Task29 = ()=>{
     const [indexImage, setIndexImage] = useState(null);
    const flatListRef = useRef(null);
   const [isOnPressed, setIsOnPressed] = useState(false);
+  const [imageArray, setImageArray] = useState(images);
     const scrollToIndex = () => {
+        console.log('image array', imageArray);
       setIsOnPressed(true);
+      console.log('indexImage', indexImage);
     const index = parseInt(indexImage, 10);
-    if (!isNaN(index) && index >= 0 && index < images.length) {
+    console.log('index', index);
+    if (!isNaN(index) && index >= 0 && index < imageArray.length) {
       flatListRef.current?.scrollToIndex({ animated: true, index });
     // setIndexImage(index);
    // setIndexImage('');
+        Alert.alert(`Scrolled to Image #${index}`);
         setModalVisible(false);
     }
     else{
@@ -24,24 +29,57 @@ const Task29 = ()=>{
     }
    //setIsOnPressed(false);
   };
+      const handleDelete = (index) => {
+        const deletedImage = imageArray.find((item)=>item.index === index);
+          if (!deletedImage) {
+              Alert.alert(`Image #${index + 1} not found.`);
+              return;
+          }
+          Alert.alert(
+              'Delete Image',
+              `Are you sure you want to delete ${deletedImage.label} Image ?`,
+              [
+                  {
+                      text: 'Cancel',
+                      style: 'cancel',
+                  },
+                  {
+                      text: 'Delete',
+                      onPress: () => {
+                          const newImages = imageArray.filter((item) => item.index !== index);
+                          console.log(newImages);
+                          setImageArray(newImages);
+                          Alert.alert(`Image ${deletedImage.label} deleted.`);
+                          setIsOnPressed(false); setIndexImage('');
+                          //reset index
+                          setIndexImage(0);
+                      },
+                  },
+              ],
+              { cancelable: true }
+          );
+      };
     return(
         <View style={styles.container}>
             <Text style={styles.text2}>Task #29</Text>
             <FlatList
             ref={flatListRef}
-            data={images}
+            data={imageArray}
             horizontal
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({item, index}) =>
-                <View style={parseInt(indexImage, 10) === index && isOnPressed  ? styles.style1 : styles.style2}>
+            keyExtractor={(item) => item.index.toString()}
+            renderItem={({item,index}) =>
+                <View style={parseInt(indexImage, 10) === index && isOnPressed ? styles.style1 : styles.style2}>
                     <View>
-                    <Text style={styles.text}>
-                    {item.label}
-                    {parseInt(indexImage,10) === index && <Image source={require('../assets/images/check.png')} style={styles.icon} />}
-                  </Text>
-            </View>
+                         <Text style={styles.text}>
+                        {item.label}
+                         {parseInt(indexImage,10) === index && isOnPressed && <Image source={require('../assets/images/check.png')} style={styles.icon} />}
+                        </Text>
+                            <Pressable onPress={() => handleDelete(item.index)} style={styles.deleteButton}>
+                               <Image source={require('../assets/images/icons8-delete-48.png')} style={styles.iconDelete} />
+                            </Pressable>
+                    </View>
                     <Image source={item.src} style={styles.image}/>
-                </View>
+               </View>
             }
             />
             <Button title="Open Modal" onPress={()=>{setModalVisible(true); setIsOnPressed(false); setIndexImage('');}}/>
@@ -133,5 +171,12 @@ const styles = {
     width: 20,
     height: 20,
   },
+    iconDelete: {
+        width: 25,
+        height: 25,
+        position: 'absolute',
+        left:12,
+        bottom: 8,
+    },
     };
 export default Task29;

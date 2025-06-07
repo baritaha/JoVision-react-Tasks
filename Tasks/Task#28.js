@@ -11,6 +11,7 @@ import { useRef } from 'react';
 
 const Task28 = ()=>{
     const [selectedImage, setSelectedImage] = useState(0);
+    const [imageArray, setImageArray] = useState(images);
     const flatListRef = useRef(null);
     const handleImagePress = (index) => {
         Alert.alert(`You have selected image : ${index}`);
@@ -24,21 +25,56 @@ const Task28 = ()=>{
             flatListRef.current.scrollToIndex({ index: selectedImage, animated: true });
         }
     }, [selectedImage]);
+    const handleDelete = (index) => {
+        const deleteImage = imageArray.find((item) => item.index === index);
+        if (!deleteImage) {
+            Alert.alert(`Image #${index + 1} not found.`);
+            return;
+        }
+        Alert.alert(
+            'Delete Image',
+            `Are you sure you want to delete ${deleteImage.label} Image ?`,
+            [
+                {
+                    text: 'Cancel',
+                    style: 'cancel',
+                },
+                {
+                    text: 'Delete',
+                    onPress: () => {
+                        const newImages = imageArray.filter((item) => item.index !== index);
+                        setImageArray(newImages);
+                        Alert.alert(`Image ${deleteImage.label} deleted.`);
+                        //reset index
+                        setSelectedImage(0);
+                    },
+                },
+            ],
+            { cancelable: true }
+        );
+    };
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Task #28</Text>
             <FlatList
                 ref={flatListRef}
-                data={images}
+                data={imageArray}
                 horizontal
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({ item, index }) => (
                     <Pressable onPress={() => handleImagePress(index)}>
-                    <Text style={styles.text2}>{item.label}</Text>
+                        <View>
+                           <Text style={styles.text2}>
+                             {item.label}
+                           </Text>
+                        </View>
                         <Image source={item.src}   style={[
-                styles.image,
-                selectedImage === index ? styles.style1 : styles.style2]}
-                />
+                           styles.image,
+                           selectedImage === index ? styles.style1 : styles.style2]}
+                           />
+                              <Pressable onPress={() => handleDelete(item.index)} style={styles.deleteButton}>
+                                 <Text style={styles.textDeleteButton}>Delete</Text>
+                               </Pressable>
                     </Pressable>
                 )}
             />
@@ -95,6 +131,16 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: 'gray',
         borderRadius: 10,
+    },
+    deleteButton: {position:'absolute',left:90,bottom:25, backgroundColor: 'red', paddingInline: 15,paddingBlock:5,textShadowColor:'blue', borderRadius: 5, zIndex: 1, fontWeight: 'bold' },
+    textDeleteButton: {
+        color: 'white',
+        fontSize: 16,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        textShadowColor: 'black',
+        textShadowOffset: { width: 1, height: 1 },
+        textShadowRadius: 2,
     },
 });
 export default Task28;

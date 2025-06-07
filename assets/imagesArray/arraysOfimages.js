@@ -1,4 +1,3 @@
-
 export const imagesArray = [
     { src: require('./img1.png') },
     { src: require('./img2.png') },
@@ -10,9 +9,24 @@ export const imagesArray = [
     { src: require('./img8.png') },
     { src: require('./img9.png') },
     { src: require('./img10.png') },
-    ];
+];
+
+// Custom Maldives-themed names (in order)
+const maldivesNames = [
+    'Trop Paradise',
+    'Azure Dreams',
+    'Sun Serenity',
+    'Coral Whisper',
+    'Palm Shadows',
+    'Lag Escape',
+    'Star Waves',
+    'Sand Silk',
+    'Infinit Blue',
+    'Island Breeze',
+];
+
 export const images = imagesArray.map((image, index) => ({
     src: image.src,
-    label: `Image ${index + 1}`,
+    label: maldivesNames[index] || `Image ${index + 1}`, // Fallback if names run out
+    index: index,
 }));
-
