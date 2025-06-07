@@ -16,6 +16,7 @@ const Task28 = ()=>{
     const handleImagePress = (index) => {
         Alert.alert(`You have selected image : ${index}`);
         setSelectedImage(index);
+        console.log('imageArray', imageArray);
         // if (flatListRef.current) {
         //     flatListRef.current.scrollToIndex({ index});
         // }
@@ -53,6 +54,25 @@ const Task28 = ()=>{
             { cancelable: true }
         );
     };
+    // Function to handle duplication of an image
+  const handleDuplicate = (index) => {
+    const duplicateImage = imageArray.find((item) => item.index === index);
+    if (!duplicateImage) {
+        Alert.alert(`Image #${index + 1} not found.`);
+        return;
+    }
+
+    // Create a new image object with a unique index
+    const newImage = { ...duplicateImage, index: Date.now(), label: `${duplicateImage.label} (Copy)` };
+
+    // Find the position of the original image and insert the duplicate next to it
+    const newImages = [...imageArray];
+    const originalIndex = newImages.findIndex(item => item.index === index);
+    newImages.splice(originalIndex + 1, 0, newImage); // Insert the new image at index + 1
+    setImageArray(newImages);
+    Alert.alert(`Image ${duplicateImage.label} duplicated.`);
+};
+
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Task #28</Text>
@@ -72,6 +92,9 @@ const Task28 = ()=>{
                            styles.image,
                            selectedImage === index ? styles.style1 : styles.style2]}
                            />
+                           <Pressable onPress={() => handleDuplicate(item.index)} style={styles.duplicateButton}>
+                                 <Text style={styles.textDuplicateButton}>Duplicate</Text>
+                               </Pressable>
                               <Pressable onPress={() => handleDelete(item.index)} style={styles.deleteButton}>
                                  <Text style={styles.textDeleteButton}>Delete</Text>
                                </Pressable>
@@ -132,8 +155,18 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         borderRadius: 10,
     },
-    deleteButton: {position:'absolute',left:90,bottom:25, backgroundColor: 'red', paddingInline: 15,paddingBlock:5,textShadowColor:'blue', borderRadius: 5, zIndex: 1, fontWeight: 'bold' },
+    deleteButton: {position:'absolute',left:125,bottom:25, backgroundColor: 'red', paddingInline: 15,paddingBlock:5,textShadowColor:'blue', borderRadius: 5, zIndex: 1, fontWeight: 'bold' },
     textDeleteButton: {
+        color: 'white',
+        fontSize: 16,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        textShadowColor: 'black',
+        textShadowOffset: { width: 1, height: 1 },
+        textShadowRadius: 2,
+    },
+    duplicateButton: {position:'absolute',left:15,bottom:25, backgroundColor: 'green', paddingInline: 15,paddingBlock:5,textShadowColor:'blue', borderRadius: 5, zIndex: 1, fontWeight: 'bold' },
+    textDuplicateButton: {
         color: 'white',
         fontSize: 16,
         textAlign: 'center',

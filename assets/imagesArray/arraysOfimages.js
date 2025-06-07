@@ -13,16 +13,16 @@ export const imagesArray = [
 
 // Custom Maldives-themed names (in order)
 const maldivesNames = [
-    'Trop Paradise',
-    'Azure Dreams',
-    'Sun Serenity',
-    'Coral Whisper',
-    'Palm Shadows',
-    'Lag Escape',
-    'Star Waves',
-    'Sand Silk',
-    'Infinit Blue',
-    'Island Breeze',
+    'Paradise',
+    'Dreams',
+    'Serenity',
+    'Whisper',
+    'Palm',
+    'Escape',
+    'Waves',
+    'Sand',
+    'Infinit',
+    'Breeze',
 ];
 
 export const images = imagesArray.map((image, index) => ({

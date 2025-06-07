@@ -3,8 +3,6 @@ import { Alert, Animated, Button, FlatList, Image, Modal, Pressable, Text, TextI
 import { images } from '../assets/imagesArray/arraysOfimages';
 
 
-
-
 const Task29 = ()=>{
     const [modalVisible, setModalVisible] = useState(false);
     const [indexImage, setIndexImage] = useState(null);
@@ -59,6 +57,22 @@ const Task29 = ()=>{
               { cancelable: true }
           );
       };
+          // Function to handle duplication of an image
+        const handleDuplicate = (index) => {
+          const duplicateImage = imageArray.find((item) => item.index === index);
+          if (!duplicateImage) {
+              Alert.alert(`Image #${index + 1} not found.`);
+              return;
+          }
+          // Create a new image object with a unique index
+          const newImage = { ...duplicateImage, index: Date.now(), label: `${duplicateImage.label} (Copy)` };
+          // Find the position of the original image and insert the duplicate next to it
+          const newImages = [...imageArray];
+          const originalIndex = newImages.findIndex(item => item.index === index);
+          newImages.splice(originalIndex + 1, 0, newImage); // Insert the new image at index + 1
+          setImageArray(newImages);
+          Alert.alert(`Image ${duplicateImage.label} duplicated.`);
+      };
     return(
         <View style={styles.container}>
             <Text style={styles.text2}>Task #29</Text>
@@ -76,6 +90,9 @@ const Task29 = ()=>{
                         </Text>
                             <Pressable onPress={() => handleDelete(item.index)} style={styles.deleteButton}>
                                <Image source={require('../assets/images/icons8-delete-48.png')} style={styles.iconDelete} />
+                            </Pressable>
+                              <Pressable onPress={() => handleDuplicate(item.index)} style={styles.duplicateButton}>
+                               <Image source={require('../assets/images/add.png')} style={styles.iconDuplicate} />
                             </Pressable>
                     </View>
                     <Image source={item.src} style={styles.image}/>
@@ -138,7 +155,7 @@ const styles = {
         paddingHorizontal: 10,
     },
     text:{fontSize:20, fontWeight:'bold',justifyContent:'center',textAlign:'center',margin:10,
-        marginBottom:-10,backgroundColor:'aqua',padding:10,color:'black',borderTopLeftRadius:15,
+        marginBottom:-10,backgroundColor:'aqua',padding:20,color:'black',borderTopLeftRadius:15,
         borderTopRightRadius:15},
     text2: {fontSize: 18, margin: 10, backgroundColor: 'lightblue', padding: 10, borderRadius: 5, width: '100%', textAlign: 'center',fontWeight: 'bold'},
     btnGroup:{flexDirection: 'row', justifyContent: 'space-between', width: '100%', marginTop: 20, paddingHorizontal: 20},
@@ -148,7 +165,7 @@ const styles = {
         borderRadius: 5,
         marginHorizontal: 10,
     },
-    image:{ width: 200, height: 200, margin: 10,borderBottomLeftRadius:15, borderBottomRightRadius:15},
+    image:{ width: 245, height: 270, margin: 10,borderBottomLeftRadius:15, borderBottomRightRadius:15},
     style1:{
           margin:20,
         borderWidth: 4,
@@ -176,7 +193,21 @@ const styles = {
         height: 25,
         position: 'absolute',
         left:12,
-        bottom: 8,
+        bottom: 30,
+    },
+    iconDuplicate: {
+        width: 25,
+        height: 25,
+    },
+    duplicateButton: {
+        position: 'absolute',
+        left: 0,
+        top:45,
+        paddingHorizontal: 15,
+        paddingVertical: 5,
+        borderRadius: 5,
+        zIndex: 1,
+        fontWeight: 'bold',
     },
     };
 export default Task29;
