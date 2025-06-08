@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     style1:{
-        borderWidth: 3,
+        borderWidth: 4,
         borderColor: 'black',
         borderRadius: 10,
         transform: [{ scaleY: 1.06 }],
