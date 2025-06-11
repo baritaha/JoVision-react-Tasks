@@ -14,7 +14,7 @@ import Task26 from './Tasks/Task#26';
 import Task27 from './Tasks/Task#27';
 import Task28 from './Tasks/Task#28';
 import Task29 from './Tasks/Task#29';
-// import Task29 from './Tasks/Task#29';
+import Task32 from './Tasks/Task#32';
 
 const App = () => {
   return (
@@ -35,18 +35,19 @@ const App = () => {
       <Task27/>
       <Task28/>
      <Task29/>
+     <Task32/>
     </ScrollView>
     </ImageBackground>
   );
-
 };
-
 const styles = StyleSheet.create({
-  background: { 
-    flex: 1, 
-    resizeMode: 'contain', // Ensures the image fits within the screen
-    alignItems: 'center', // Centers content inside ImageBackground
-    justifyContent: 'center', // Centers image itself
+  background: {
+    flex: 1,
+    resizeMode: 'contain',
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   scrollContent: {
     flexGrow: 1,
