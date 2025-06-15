@@ -2,9 +2,8 @@ import { Animated, Button, StyleSheet, Text, View } from 'react-native';
 import useCurrentTimeTask34 from '../hooks/useCurrentTime_Task34';
 import { useEffect, useRef, useState } from 'react';
 
-const Clock = () => {
+const Clock = ({fadeAnim }) => {
     const currentTime = useCurrentTimeTask34();
-    const fadeAnim = useRef(new Animated.Value(0)).current;
       useEffect(() => {
     Animated.timing(fadeAnim, {
       toValue: 1,
@@ -39,13 +38,24 @@ const Clock = () => {
 };
 const Task34 = ()=>{
  const [showClock,setShowClock] = useState(true);
+ const fadeAnim = useRef(new Animated.Value(0)).current;
+
+const toggleClock = () => {
+  if (!showClock) {
+    Animated.timing(fadeAnim, { toValue: 1, duration: 1000, useNativeDriver: true }).start();
+    setShowClock(true);
+  } else {
+    Animated.timing(fadeAnim, { toValue: 0, duration: 1000, useNativeDriver: true }).start(() => setShowClock(false));
+  }
+};
+
         return (
             <View style={styles.container}>
                 <Text style={styles.heading}>Task # 34</Text>
                 <Button style={styles.button} title={showClock ? 'Hide Clock' : ' Show Clock'}
-                onPress={()=>setShowClock(prev => !prev)}
+                onPress={()=>toggleClock()}
                 />
-                {showClock && <Clock/>}
+                {showClock && <Clock fadeAnim={fadeAnim}/>}
             </View>
         );
 };
