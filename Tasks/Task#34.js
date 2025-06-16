@@ -9,8 +9,7 @@ const Clock = ({fadeAnim }) => {
       toValue: 1,
       duration: 1500,
       useNativeDriver: true,
-
-    }).start();
+  }).start();
   }, [fadeAnim]);
     const day = currentTime.getDate();
     const month = currentTime.getMonth() + 1;
@@ -51,7 +50,7 @@ const toggleClock = () => {
 
         return (
             <View style={styles.container}>
-                <Text style={styles.heading}>Task # 34</Text>
+                <Text style={styles.heading}>Task #34</Text>
                 <Button style={styles.button} title={showClock ? 'Hide Clock' : ' Show Clock'}
                 onPress={()=>toggleClock()}
                 />
@@ -68,7 +67,9 @@ const styles = StyleSheet.create({
      padding: 10, borderRadius: 5, width: '100%', textAlign: 'center',fontWeight: 'bold',
       marginTop:0,
     },
-    timeText:{fontSize:32,fontWeight:600,color:'#ffc338',backgroundColor:'black',width:'100%',margin:10,padding:20,borderRadius:20},
+    timeText:{fontSize:32,fontWeight:600,color:'#ffc338',
+      backgroundColor:'black',width:'100%',margin:10,
+      padding:20,borderRadius:20,minWidth:250,justifyContent:'center',textAlign:'center'},
     button:{marginBottom:20},
 });
 export default Task34;
