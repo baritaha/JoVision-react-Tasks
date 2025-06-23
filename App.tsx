@@ -1,5 +1,6 @@
 import React from 'react';
 import { ImageBackground, ScrollView, StyleSheet } from 'react-native';
+import { Provider } from 'react-redux';
 import Task16 from './Tasks/Task#16';
 import Task17 from './Tasks/Task#17';
 import Task18 from './Tasks/Task#18';
@@ -20,8 +21,10 @@ import Task34 from './Tasks/Task#34';
 import Task35 from './Tasks/Task#35';
 import Task36 from './Tasks/Task#36';
 import Task38 from './Tasks/Task#38';
+import storeTask39 from './redux/storeTask39';
+import Task39 from './Tasks/Task#39';
 
-const App = () => {
+const AppContent  = () => {
   return (
     <ImageBackground source={require('./assets/images/imgBk2.png')}
       style={styles.background}>
@@ -46,10 +49,16 @@ const App = () => {
      <Task35/>
      <Task36/>
      <Task38/>
+     <Task39/>
     </ScrollView>
     </ImageBackground>
   );
 };
+const App = () => (
+  <Provider store={storeTask39}>
+    <AppContent />
+  </Provider>
+);
 const styles = StyleSheet.create({
   background: {
     flex: 1,
