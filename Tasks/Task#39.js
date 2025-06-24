@@ -7,7 +7,7 @@ const Task39 = () => {
 
   return (
     <View style={styles.container}>
-        <Text style={styles.heading}>Task #39</Text>
+        <Text style={styles.heading}>Task #39 (use function)</Text>
       <TouchableOpacity
        style={styles.btn}
         onPress={() => setVisible(prev => !prev)}

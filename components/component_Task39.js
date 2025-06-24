@@ -35,18 +35,20 @@ const styles = StyleSheet.create({
     width:'100%',
     maxWidth:'70%',
     position:'relative',
-    top:25,
-    minHeight:100,
+    top:35,
+    minHeight:110,
   },
   input: {
     borderWidth: 1,
     borderColor: '#90caf9',
     padding: 10,
-    marginBottom: 10,
+    top:10,
     borderRadius: 6,
     position:'absolute',
+    width:'100%',
+    left:13,
   },
-  text:{top:35,backgroundColor:'aqua',fontSize:18},
+  text:{top:45,backgroundColor:'aqua',fontSize:18,padding:5,borderRadius:6,color:'black'},
 
 });
 

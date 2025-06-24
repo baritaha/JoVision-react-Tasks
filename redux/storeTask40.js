@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const textSlice = createSlice({
-  name: 'savedText',
+  name: 'savedTextClass',
   initialState: '',
   reducers: {
-    setSavedText: (state, action) => action.payload,
+    setSavedTextClass: (state, action) => action.payload,
   },
 });
 
-export const { setSavedText } = textSlice.actions;
+export const { setSavedTextClass } = textSlice.actions;
 export default textSlice.reducer; // 🔥 Export only the reducer
