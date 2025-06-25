@@ -1,14 +1,42 @@
 // Tasks/Task#41.js
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet,Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // 4 simple screen components
-const Screen1 = () => <View style={styles.center}><Text style={styles.text}>Screen 1</Text></View>;
-const Screen2 = () => <View style={styles.center}><Text style={styles.text}>Screen 2</Text></View>;
-const Screen3 = () => <View style={styles.center}><Text style={styles.text}>Screen 3</Text></View>;
-const Screen4 = () => <View style={styles.center}><Text style={styles.text}>Screen 4</Text></View>;
+const Screen1 = () =>
+ <View style={styles.center}>
+  <Text style={styles.text}>Screen 1</Text>
+  <Image
+  source={require('../assets/images/screen1.png')}
+  style={styles.image}
+  />
+  </View>;
+const Screen2 = () =>
+   <View style={styles.center}>
+    <Text style={styles.text}>Screen 2</Text>
+    <Image
+  source={require('../assets/images/screen2.png')}
+  style={styles.image}
+  />
+    </View>;
+const Screen3 = () =>
+   <View style={styles.center}>
+     <Text style={styles.text}>Screen 3</Text>
+     <Image
+  source={require('../assets/images/screen3.png')}
+  style={styles.image}
+  />
+    </View>;
+const Screen4 = () =>
+<View style={styles.center}>
+  <Text style={styles.text}>Screen 4</Text>
+   <Image
+  source={require('../assets/images/screen4.png')}
+  style={styles.image}
+  />
+  </View>;
 
 const Tab = createBottomTabNavigator();
 
@@ -32,11 +60,21 @@ const styles = StyleSheet.create({
   container:{flex: 1, height: 500,marginTop:10},
   center: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent:'center',
+    alignItems:'center',
+    position:'relative',
   },
   text: {
     fontSize: 24,
+    position:'absolute',
+    top:150,
+    color:'white',
+    zIndex:1,
+    backgroundColor:'rgba(128, 128, 128, 0.6)',
+    padding:17,
+    width:'100%',
+    textAlign:'center',
+    borderRadius:5,
   },
     heading: {
     fontSize: 18,
@@ -48,6 +86,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     top: 0,
   },
+  image: {
+    width:'100%',
+    height:'100%',
+    minHeight:400,
+  borderRadius: 10,
+   resizeMode:'cover',
+},
+
 });
 
 export default Task41;
