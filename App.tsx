@@ -24,6 +24,7 @@ import Task38 from './Tasks/Task#38';
 import Task39 from './Tasks/Task#39';
 import rootStore from './redux/store';
 import Task40 from './Tasks/Task#40';
+import Task41 from './Tasks/Task41';
 
 const AppContent  = () => {
   return (
@@ -52,6 +53,7 @@ const AppContent  = () => {
      <Task38/>
      <Task39/>
      <Task40/>
+     <Task41/>
     </ScrollView>
     </ImageBackground>
   );
