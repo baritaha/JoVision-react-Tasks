@@ -25,6 +25,9 @@ import Task39 from './Tasks/Task#39';
 import rootStore from './redux/store';
 import Task40 from './Tasks/Task#40';
 import Task41 from './Tasks/Task41';
+import { View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
 
 const AppContent  = () => {
   return (
@@ -53,8 +56,12 @@ const AppContent  = () => {
      <Task38/>
      <Task39/>
      <Task40/>
-     <Task41/>
     </ScrollView>
+   <View style={styles.task41Container}>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <Task41 />
+        </GestureHandlerRootView>
+      </View>
     </ImageBackground>
   );
 };
@@ -79,5 +86,11 @@ const styles = StyleSheet.create({
     paddingBottom: 100,
 
   },
+  task41Container: {
+  height: 500,
+  width: '100%',
+  marginTop: 10,
+},
+
 });
 export default App;
